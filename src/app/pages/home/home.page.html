@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p *ngIf="eventsList.length == 0; else eventsListBlock">
+    No events on my list.
+  </p>
+
+  <ng-template #eventsListBlock>
+    <ion-list lines="full">
+      <ion-item *ngFor="let event of eventsList; index as i" button detail>
+        <ion-label>{{ event.title }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openAddEventPage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

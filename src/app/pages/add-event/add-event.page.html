@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Title:</ion-label>
+      <ion-input
+        [(ngModel)]="event.title"
+        type="text"
+        placeholder="Event title"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description:</ion-label>
+      <ion-textarea
+        [(ngModel)]="event.description"
+        placeholder="Event description"
+      ></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date & Time:</ion-label>
+      <ion-input
+        [(ngModel)]="event.dateTime"
+        type="text"
+        placeholder="Event date and time"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Location:</ion-label>
+      <ion-input
+        [(ngModel)]="event.location"
+        type="text"
+        placeholder="Event location"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="submit-button">
+    <ion-button (click)="addEvent()">
+      <ion-icon slot="start" name="save"></ion-icon>
+      Save
+    </ion-button>
+  </div>
+</ion-content>
