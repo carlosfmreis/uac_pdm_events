@@ -23,4 +23,9 @@ export class EventsService {
     this.eventsList.push(newEvent);
     this.streamUpdatedEvents();
   }
+
+  public removeEvent(index: number): void {
+    this.eventsList.splice(index, 1);
+    this.streamUpdatedEvents();
+  }
 }

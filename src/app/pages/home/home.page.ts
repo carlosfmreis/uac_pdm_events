@@ -31,4 +31,8 @@ export class HomePage implements OnInit, OnDestroy {
   openAddEventPage(): void {
     this.router.navigateByUrl('/add-event');
   }
+
+  removeEvent(index: number): void {
+    this.eventsService.removeEvent(index);
+  }
 }
