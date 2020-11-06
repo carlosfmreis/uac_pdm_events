@@ -7,6 +7,7 @@ import { MyEvent } from '../models/event.model';
 })
 export class EventsService {
   private eventsList: MyEvent[];
+  private localStorageEventsListKey = 'eventsList';
 
   public eventsListSubject: BehaviorSubject<MyEvent[]>;
 
@@ -19,13 +20,19 @@ export class EventsService {
     this.eventsListSubject.next(this.eventsList);
   }
 
+  private saveEventsList(): void {
+    localStorage.setItem(this.localStorageEventsListKey, JSON.stringify(this.eventsList));
+  }
+
   public addEvent(newEvent: MyEvent): void {
     this.eventsList.push(newEvent);
     this.streamUpdatedEvents();
+    this.saveEventsList();
   }
 
   public removeEvent(index: number): void {
     this.eventsList.splice(index, 1);
     this.streamUpdatedEvents();
+    this.saveEventsList();
   }
 }
