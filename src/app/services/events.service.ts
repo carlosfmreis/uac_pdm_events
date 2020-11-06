@@ -12,7 +12,10 @@ export class EventsService {
   public eventsListSubject: BehaviorSubject<MyEvent[]>;
 
   constructor() {
-    this.eventsList = [];
+    this.eventsList =
+      localStorage.getItem(this.localStorageEventsListKey) === null
+        ? []
+        : JSON.parse(localStorage.getItem(this.localStorageEventsListKey));
     this.eventsListSubject = new BehaviorSubject<MyEvent[]>(this.eventsList);
   }
 
@@ -21,7 +24,10 @@ export class EventsService {
   }
 
   private saveEventsList(): void {
-    localStorage.setItem(this.localStorageEventsListKey, JSON.stringify(this.eventsList));
+    localStorage.setItem(
+      this.localStorageEventsListKey,
+      JSON.stringify(this.eventsList)
+    );
   }
 
   public addEvent(newEvent: MyEvent): void {
