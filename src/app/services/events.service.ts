@@ -7,7 +7,7 @@ import { MyEvent } from '../models/event.model';
 })
 export class EventsService {
   private eventsList: MyEvent[];
-  private const localStorageEventsListKey = 'eventsList';
+  private readonly localStorageEventsListKey = 'eventsList';
 
   public eventsListSubject: BehaviorSubject<MyEvent[]>;
 
