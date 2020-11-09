@@ -10,6 +10,7 @@ export class EventsService {
   private readonly localStorageEventsListKey = 'eventsList';
 
   public eventsListSubject: BehaviorSubject<MyEvent[]>;
+  public selectedIndex: number;
 
   constructor() {
     this.eventsList =

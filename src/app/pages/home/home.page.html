@@ -13,7 +13,7 @@
     <ion-list lines="full">
       <ion-list>
         <ion-item-sliding *ngFor="let event of eventsList; index as i">
-          <ion-item button detail>
+          <ion-item button detail (click)="openEvent(i)">
             <ion-label>{{ event.title }}</ion-label>
           </ion-item>
           <ion-item-options side="end">
