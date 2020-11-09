@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { MyEvent } from 'src/app/models/event.model';
 import { EventsService } from 'src/app/services/events.service';
@@ -13,7 +14,10 @@ export class EventDetailsPage implements OnInit, OnDestroy {
 
   public event: MyEvent;
 
-  constructor(private eventsService: EventsService) {}
+  constructor(
+    private eventsService: EventsService,
+    private navigationController: NavController
+  ) {}
 
   ngOnInit(): void {
     this.eventsSubscription = this.eventsService.eventsListSubject.subscribe(
@@ -25,5 +29,10 @@ export class EventDetailsPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.eventsSubscription.unsubscribe();
+  }
+
+  deleteEvent(): void {
+    this.eventsService.removeEvent(this.eventsService.selectedIndex);
+    this.navigationController.pop();
   }
 }
